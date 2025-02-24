@@ -1,0 +1,66 @@
+/* 🌿 Font */
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&display=swap');
+
+/* 🌅 Background */
+body {
+  background: linear-gradient(120deg, #FFEBB2, #FFD3B5, #FFC3A0, #FFAAA5);
+  font-family: 'Cormorant Garamond', serif;
+  margin: 0;
+  padding: 20px;
+}
+
+/* 📌 Recipe Container */
+.recipe-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+  padding: 20px;
+  max-width: 1200px;
+  margin: auto;
+}
+
+/* 🃏 Recipe Card */
+.recipe-card {
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 12px;
+  box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease-in-out;
+}
+
+.recipe-card:hover {
+  transform: scale(1.02);
+}
+
+/* 🖼️ Recipe Image */
+mat-card-image {
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+}
+
+/* 📝 Recipe Content */
+mat-card-content {
+  padding: 16px;
+  text-align: center;
+}
+
+h2 {
+  color: #5C5C76;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+/* 🕒 Time Tag */
+.time-tag {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 4px 10px;
+  background: #FF8080;
+  color: white;
+  border-radius: 6px;
+  font-weight: bold;
+}
+
+/* 📌 Button */
+mat-card-actions {
+  padding: 16px;
+}

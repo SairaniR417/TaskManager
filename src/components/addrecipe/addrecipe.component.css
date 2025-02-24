@@ -1,0 +1,76 @@
+/* 🌿 Elegant Font */
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&display=swap');
+
+/* 🎨 Full Page Background with Soft Gradient */
+body {
+  background: linear-gradient(120deg, #FFEBB2, #FFD3B5, #FFC3A0, #FFAAA5); /* Warm Peachy Pastel */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  font-family: 'Cormorant Garamond', serif;
+  overflow: hidden;
+}
+
+
+/* 🎨 Recipe Card */
+.recipe-card {
+  top: 2rem;
+  max-width: 600px;
+  margin: auto;
+  padding: 24px;
+  background: rgba(255, 255, 255, 0.95); /* Soft White with Subtle Transparency */
+  border-radius: 12px;
+  box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.15);
+  font-family: 'Cormorant Garamond', serif;
+  text-align: center;
+  animation: fadeIn 0.8s ease-in-out;
+  transition: transform 0.3s ease-in-out;
+}
+
+/* 📝 Form Styling */
+mat-form-field {
+  width: 100%;
+  margin-bottom: 16px;
+}
+
+/* 🖊️ Interactive Form Fields */
+mat-form-field input, mat-form-field textarea {
+  transition: border 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+mat-form-field input:focus, mat-form-field textarea:focus {
+  border: 2px solid #FF8080; /* Soft Coral Focus */
+  box-shadow: 0px 4px 10px rgba(255, 128, 128, 0.3);
+}
+
+/* 🎀 Elegant Titles */
+h2, h3 {
+  color: #5C5C76; /* Elegant Soft Slate */
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+
+/* 📜 Textarea */
+textarea {
+  resize: vertical;
+  font-family: 'Cormorant Garamond', serif;
+}
+
+/* 🌟 Animated Submit Button */
+.submit-btn {
+  width: 100%;
+  padding: 12px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  background: #FF8080; /* Soft Coral */
+  color: white;
+  border-radius: 8px;
+  transition: transform 0.3s ease-in-out, background 0.3s ease-in-out;
+}
+
+.submit-btn:hover {
+  background: #E76F51; /* Deeper Warm Coral */
+  transform: scale(1.05);
+}
+

@@ -1,0 +1,90 @@
+/* 🌟 Elegant Font */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&display=swap');
+
+body {
+  font-family: 'Playfair Display', serif;
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* 🎨 Animated Gradient Background */
+.login-container {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(45deg, #F8BBD0, #A5D6A7, #64B5F6);
+  background-size: 300% 300%;
+  animation: gradientBG 8s ease infinite;
+}
+
+/* 🌈 Gradient Animation */
+@keyframes gradientBG {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* 🎨 Login Card */
+.login-card {
+  width: 420px;
+  padding: 25px;
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 12px;
+  box-shadow: 4px 6px 15px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  position: relative;
+  animation: fadeIn 1s ease-in-out;
+}
+
+/* ✍️ Title Styling */
+mat-card-title {
+  font-size: 28px;
+  font-weight: 700;
+  color: #37474F; /* Dark Grey */
+  padding-bottom: 2rem;
+}
+
+/* 📩 Material Form Fields */
+mat-form-field {
+  width: 100%;
+  margin-bottom: 15px;
+  transition: transform 0.3s ease-in-out;
+}
+
+mat-form-field:focus-within {
+  transform: scale(1.02);
+}
+
+/* 🎭 Button Animation */
+.button-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+button {
+  background: #64B5F6;
+  color: white;
+  padding: 12px 20px;
+  border-radius: 8px;
+  font-size: 18px;
+  border: none;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s ease;
+  font-weight: bold;
+  font-family: 'Playfair Display', serif;
+}
+
+/* 🎭 Button Hover Effect */
+button:hover {
+  background: #42A5F5;
+  transform: scale(1.05);
+}
+
+

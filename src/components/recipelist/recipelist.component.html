@@ -1,0 +1,14 @@
+<div class="recipe-container">
+    <mat-card *ngFor="let recipe of recipes" class="recipe-card">
+      <img mat-card-image [src]="recipe.image" alt="{{recipe.name}}">
+      <mat-card-content>
+        <h2>{{ recipe.name }}</h2>
+        <p>{{ recipe.description }}</p>
+        <span class="time-tag">{{ recipe.time }}</span>
+      </mat-card-content>
+      <mat-card-actions align="end">
+        <button mat-button color="primary">View Recipe</button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+  

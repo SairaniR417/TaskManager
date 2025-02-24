@@ -1,0 +1,46 @@
+<mat-card class="recipe-card">
+    <h2>Add New Recipe</h2>
+    <form [formGroup]="recipeForm" (ngSubmit)="onSubmit()">
+
+        <mat-form-field appearance="outline" class="full-width">
+            <mat-label>Recipe Name</mat-label>
+            <mat-icon matPrefix>restaurant_menu</mat-icon>
+            <input matInput formControlName="name" placeholder="Enter recipe name">
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="full-width">
+            <mat-label>Category</mat-label>
+            <mat-select formControlName="category">
+                <mat-option value="appetizer">Appetizer</mat-option>
+                <mat-option value="main_course">Main Course</mat-option>
+                <mat-option value="dessert">Dessert</mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <!-- Nested FormGroup for Ingredients -->
+        <div formGroupName="ingredients">
+            <h3>Ingredients</h3>
+
+            <mat-form-field appearance="outline" class="full-width">
+                <mat-label>Main Ingredient</mat-label>
+                <mat-icon matPrefix>eco</mat-icon>
+                <input matInput formControlName="main" placeholder="Enter main ingredient">
+            </mat-form-field>
+
+            <mat-form-field appearance="outline" class="full-width">
+                <mat-label>Additional Ingredients</mat-label>
+                <mat-icon matPrefix>kitchen</mat-icon>
+                <textarea matInput formControlName="additional" placeholder="List additional ingredients"></textarea>
+            </mat-form-field>
+        </div>
+
+        <mat-form-field appearance="outline" class="full-width">
+            <mat-label>Instructions</mat-label>
+            <mat-icon matPrefix>menu_book</mat-icon>
+            <textarea matInput formControlName="instructions" placeholder="Describe how to prepare the dish"></textarea>
+        </mat-form-field>
+
+        <button mat-raised-button color="primary" class="submit-btn" type="submit">Submit Recipe</button>
+
+    </form>
+</mat-card>
