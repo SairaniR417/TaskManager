@@ -6,7 +6,7 @@ import { NgFor } from '@angular/common';
 
 @Component({
   selector: 'app-recipelist',
-  imports: [CommonModule,MatCardModule,MatButtonModule,NgFor],
+  imports: [CommonModule, MatCardModule, MatButtonModule, NgFor],
   templateUrl: './recipelist.component.html',
   styleUrl: './recipelist.component.css'
 })
@@ -14,7 +14,7 @@ export class RecipelistComponent {
   recipes = [
     {
       name: 'Classic Spaghetti Carbonara',
-      image: 'assets/images/caprese.jpg',
+      image: 'assets/images/spaghetti.jpg',
       description: 'A traditional Italian pasta dish with eggs, cheese, pancetta, and pepper.',
       time: '20 mins'
     },

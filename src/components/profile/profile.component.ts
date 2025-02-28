@@ -14,16 +14,17 @@ export class ProfileComponent {
   constructor(private http: HttpClient, private authService: AuthService) { }
 
   ngOnInit() {
-    const token = this.authService.getToken();
-    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+    // const token = this.authService.getToken();
+    // const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
 
-    this.http.get('http://localhost:5000/profile', { headers }).subscribe(
-      (response) => {
-        this.profile = response;
-      },
-      (error) => {
-        console.error('Error fetching profile', error);
-      }
-    );
-  }
+  //   this.http.get('http://localhost:5000/profile', { headers }).subscribe(
+  //     (response) => {
+  //       this.profile = response;
+  //     },
+  //     (error) => {
+  //       console.error('Error fetching profile', error);
+  //     }
+  //   );
+  // }
+}
 }

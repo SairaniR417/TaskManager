@@ -6,6 +6,9 @@ import jwt from 'jsonwebtoken';
 import dotenv from 'dotenv';
 import User from './model/user.js';
 import Recipe from './model/recipe.js';
+// import multer from 'multer';
+// import { GridFsStorage } from 'multer-gridfs-storage';
+// import { Grid } from 'gridfs-stream';
 
 dotenv.config()
 
@@ -19,6 +22,8 @@ app.use(cors({
     credentials: true
 }));
 
+
+
 //connecting to mongoose
 const uri = 'mongodb+srv://sairanireddy11:Bangaru123@cluster0.3lqeg.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0';
 mongoose.connect(uri, {
@@ -29,6 +34,25 @@ mongoose.connect(uri, {
         console.log("MongoDB Connected…")
     })
     .catch(err => console.log(err))
+
+// let gfs;
+// conn.once('open', () => {
+//     gfs = Grid(conn.db, mongoose.mongo);
+//     gfs.collection('uploads');
+// });
+
+// Multer GridFS Storage Configuration
+// const storage = new GridFsStorage({
+//     url: mongoURI,
+//     file: (req, file) => {
+//         return {
+//             filename: `${Date.now()}-${file.originalname}`,
+//             bucketName: 'uploads'
+//         };
+//     }
+// });
+
+// const upload = multer({ storage });
 
 //signup
 app.post('/signup', async (req, res) => {
@@ -47,7 +71,7 @@ app.post('/signup', async (req, res) => {
         const salt = await bcrypt.genSalt(10);
         const hashedPassword = await bcrypt.hash(password, salt);
 
-        const newUser = new User({ username, email, password:hashedPassword});
+        const newUser = new User({ username, email, password: hashedPassword });
         await newUser.save();
         res.status(201).json({ message: "User registered successfully!" });
     } catch (error) {
@@ -62,21 +86,21 @@ app.post('/signup', async (req, res) => {
 // Login Route
 app.post('/login', async (req, res) => {
     try {
-      const { email, password } = req.body;
-      const user = await User.findOne({ email });
-      if (!user) return res.status(400).json({ message: 'Invalid email or password' });
-  
-      const isMatch = await bcrypt.compare(password, user.password);
-      if (!isMatch) return res.status(400).json({ message: 'Invalid email or password' });
-  
-      const token = jwt.sign({ id: user._id, email: user.email }, "abcd" , { expiresIn: '1h' });
-      
-      res.json({ message: 'Login successful', token });
+        const { email, password } = req.body;
+        const user = await User.findOne({ email });
+        if (!user) return res.status(400).json({ message: 'Invalid email or password' });
+
+        const isMatch = await bcrypt.compare(password, user.password);
+        if (!isMatch) return res.status(400).json({ message: 'Invalid email or password' });
+
+        const token = jwt.sign({ id: user._id, email: user.email }, "abcd", { expiresIn: '1h' });
+
+        res.json({ message: 'Login successful', token });
     } catch (error) {
-      console.error(error);
-      res.status(500).json({ message: 'Server error' });
+        console.error(error);
+        res.status(500).json({ message: 'Server error' });
     }
-  });
+});
 
 
 // Logout route
@@ -86,13 +110,23 @@ app.get('/logout', (req, res) => {
 
 app.post('/recipes', async (req, res) => {
     try {
-        const recipe = new Recipe(req.body);
-        await recipe.save();
+        const newRecipe = new Recipe({
+            name: req.body.name,
+            category: req.body.category,
+            ingredients: {
+                main: req.body.main,
+                additional: req.body.additional || ''
+            },
+            instructions: req.body.instructions,
+            // image: req.file.filename
+        });
+        await newRecipe.save();
         res.status(201).json({ message: 'Recipe added successfully', recipe });
     } catch (error) {
         res.status(400).json({ error: error.message });
     }
 });
+
 app.get('/recipes', async (req, res) => {
     try {
         const recipes = await Recipe.find();

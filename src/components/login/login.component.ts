@@ -39,15 +39,15 @@ export class LoginComponent {
 
     if (!email || !password) {
       console.error("All fields are required.");
-      alert("Please fill in all fields before signing up.");
       return;
     }
 
     this.authService.login(email, password).subscribe({
         next: (res) => {
-          const token = res.token;          
-          console.log(token)
-          this.authService.saveToken(token);
+          const token = res.token;
+          localStorage.setItem('authToken', token);
+          this.authService.setLoginStatus(true); // Update state
+          this.router.navigate(['/recipelist']);
         },
         error: (error) => console.log("Error during Login", error),
         complete: () => console.info('complete')

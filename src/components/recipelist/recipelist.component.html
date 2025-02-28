@@ -1,6 +1,7 @@
 <div class="recipe-container">
     <mat-card *ngFor="let recipe of recipes" class="recipe-card">
-      <img mat-card-image [src]="recipe.image" alt="{{recipe.name}}">
+      <!-- <img [src]="'http://localhost:5000/image/' + recipe.imageUrl" alt="{{ recipe.name }}" class="recipe-image" /> -->
+      <img mat-card-image [src]="recipe.image" alt="{{recipe.name}}" loading="lazy" >
       <mat-card-content>
         <h2>{{ recipe.name }}</h2>
         <p>{{ recipe.description }}</p>
@@ -10,5 +11,6 @@
         <button mat-button color="primary">View Recipe</button>
       </mat-card-actions>
     </mat-card>
+ 
   </div>
   

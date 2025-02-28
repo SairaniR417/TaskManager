@@ -7,33 +7,40 @@ import { BehaviorSubject, catchError, Observable, tap, throwError } from 'rxjs';
   providedIn: 'root'
 })
 export class AuthService {
-  private apiurl = 'http://localhost:5000' ;
+  private apiurl = 'http://localhost:5000';
+  private loginStatus = new BehaviorSubject<boolean>(this.isLoggedIn());
 
   constructor(private http: HttpClient) { }
 
-  signup(username: string, email:string, password:string):Observable<any> {
-    return this.http.post(`${this.apiurl}/signup`,{username,email,password});
+  signup(username: string, email: string, password: string): Observable<any> {
+    return this.http.post(`${this.apiurl}/signup`, { username, email, password });
   }
 
-  login(email:string, password:string):Observable<any>{
-    return this.http.post(`${this.apiurl}/login`,{email,password})
+  login(email: string, password: string): Observable<any> {
+    return this.http.post(`${this.apiurl}/login`, { email, password })
   }
 
-  logout(): Observable<any> {
-    return this.http.get(`${this.apiurl}/logout`);
+  getLoginStatus() {
+    return this.loginStatus.asObservable();
   }
 
-saveToken(token: string): void {
-  localStorage.setItem('authToken', token);
-}
-
-  getToken():string | null {
-    return localStorage.getItem('authToken');
+  setLoginStatus(status: boolean) {
+    this.loginStatus.next(status);
   }
 
+  logout() {
+    if (typeof window !== 'undefined') {
+    localStorage.removeItem('authToken');
+    this.loginStatus.next(false);
+    }
+  }
 
- isLoggedIn(): boolean {
-  return this.getToken() !== null;
-}
+  isLoggedIn(): any {
+    if (typeof window !== 'undefined') {
+      return !!localStorage.getItem('authToken');
+    }
+
+  }
+
 
 }

@@ -27,6 +27,8 @@ import { Recipe } from '../../model/recipe.model';
 })
 export class AddrecipeComponent {
   private recipeService = inject(RecipesService);
+  selectedImage!: File;
+
   recipeForm = new FormGroup({
     name: new FormControl('', [Validators.required]),
     category: new FormControl('', [Validators.required]),
@@ -40,8 +42,8 @@ export class AddrecipeComponent {
 
   onSubmit() {
     if (this.recipeForm.valid) {
-      debugger;
       const newRecipe: Recipe = this.recipeForm.value as Recipe;
+      console.log(newRecipe)
       this.recipeService.addRecipe(newRecipe).subscribe({
         next: (res) => {
           alert('Recipe added successfully!');
