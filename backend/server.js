@@ -121,7 +121,7 @@ app.post('/recipes', async (req, res) => {
             // image: req.file.filename
         });
         await newRecipe.save();
-        res.status(201).json({ message: 'Recipe added successfully', recipe });
+        res.status(201).json({ message: 'Recipe added successfully', newRecipe });
     } catch (error) {
         res.status(400).json({ error: error.message });
     }
