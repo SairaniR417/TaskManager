@@ -1,8 +1,9 @@
-import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { Component, inject } from '@angular/core';
+import { CommonModule, NgIf } from '@angular/common';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { NgFor } from '@angular/common';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-recipelist',
@@ -11,6 +12,7 @@ import { NgFor } from '@angular/common';
   styleUrl: './recipelist.component.css'
 })
 export class RecipelistComponent {
+   private router = inject(Router)
   recipes = [
     {
       name: 'Classic Spaghetti Carbonara',
@@ -31,4 +33,8 @@ export class RecipelistComponent {
       time: '30 mins'
     }
   ];
+
+  viewRecipe() {
+    this.router.navigate(['/recipe/:id']);
+  }
 }

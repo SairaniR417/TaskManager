@@ -7,7 +7,7 @@ import { BehaviorSubject, catchError, Observable, tap, throwError } from 'rxjs';
   providedIn: 'root'
 })
 export class AuthService {
-  private apiurl = 'http://localhost:5000';
+  private apiurl ='http://localhost:5000';
   private loginStatus = new BehaviorSubject<boolean>(this.isLoggedIn());
 
   constructor(private http: HttpClient) { }

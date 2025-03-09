@@ -1,0 +1,22 @@
+<div *ngIf="recipe" class="recipe-container">
+    <h2>{{ recipe.name }}</h2>
+    <p class="category">Category: {{ recipe.category }}</p>
+  
+    <img [src]="recipe.image" [alt]="recipe.name" class="recipe-image" />
+  
+    <h3>Ingredients</h3>
+    <p><strong>Main:</strong> {{ recipe.ingredients.main }}</p>
+    <p *ngIf="recipe.ingredients.additional">
+      <strong>Additional:</strong> {{ recipe.ingredients.additional }}
+    </p>
+  
+    <h3>Instructions</h3>
+    <p>{{ recipe.instructions }}</p>
+  
+    <a routerLink="/recipelist" class="back-button">⬅ Back to Recipes</a>
+  </div>
+  
+  <div *ngIf="!recipe">
+    <p>Recipe not found.</p>
+  </div>
+  

@@ -30,12 +30,17 @@
               "@angular/material/prebuilt-themes/azure-blue.css",
               "src/styles.css"
             ],
-            "scripts": [],
+            "scripts": [
+              "node_modules/process/browser.js",
+              "node_modules/path-browserify/index.js",
+              "node_modules/stream-http/index.js"
+            ],
             "server": "src/main.server.ts",
             "outputMode": "server",
             "ssr": {
               "entry": "src/server.ts"
-            }
+            },
+            "allowedCommonJsDependencies": ["process","mime"]
           },
           "configurations": {
             "production": {
